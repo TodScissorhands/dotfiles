@@ -1,0 +1,20 @@
+(defpoll time :interval "1s" "date '+%H:%M'")
+
+(defpoll date :interval "60s" "date '+%A, %d %B'")
+
+(defwidget clock []
+    (box :class "clock-widget" :orientation "v" :space-evenly false
+        (label :class "clock-time" :text time)
+        (label :class "clock-date" :text date)))
+
+(defwindow clock-window
+    :monitor 0
+    :geometry (geometry
+        :x "20px"
+        :y "60px"
+        :width "200px"
+        :height "80px"
+        :anchor "top left")
+    :stacking "bottom"
+    :exclusive false
+    (clock))
